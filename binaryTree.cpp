@@ -38,7 +38,39 @@ using namespace std;
   }
 
   void BinaryTreeSearch::insert(Student student)
-  {}
+  {
+    if (isFull()) {
+      cout << "tree is full" << endl;
+      cout << "not is possible to insert" << endl;
+    } else {
+      Node* newNode = new Node;
+      newNode -> student = student;
+      newNode -> rightChild = NULL;
+      newNode -> leftChild = NULL;
+      if (root == NULL){
+        root = newNode;
+      } else {
+        Node* temp = root;
+        while (temp != NULL) {
+          if (student.obtainId() < temp->student.obtainId()) {
+            if (temp->leftChild == NULL){
+              temp->leftChild = newNode;
+              break;
+            } else {
+              temp = temp->leftChild;
+            }
+          } else {
+            if (temp->rightChild == NULL){
+              temp->rightChild = newNode;
+              break;
+            } else {
+              temp = temp->rightChild;
+            }
+          }
+        }
+      }
+    }
+  }
 
   void BinaryTreeSearch::remove(Student student)
   {}
