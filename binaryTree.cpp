@@ -85,7 +85,21 @@ using namespace std;
   {}
 
   void BinaryTreeSearch::search(Student& student, bool& search)
-  {}
+  {
+    search = false;
+    Node* currentNode = root;
+    while (currentNode != NULL) {
+      if (student.obtainId() < currentNode->student.obtainId()) {
+        currentNode = currentNode->leftChild;
+      } else if (student.obtainId() > currentNode->student.obtainId()) {
+        currentNode = currentNode->rightChild;
+      } else {
+        search = true;
+        student = currentNode->student;
+        break;
+      }
+    }
+  }
 
   void BinaryTreeSearch::printPreOrder(Node* currentNode)
   {}
