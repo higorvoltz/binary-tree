@@ -73,7 +73,46 @@ using namespace std;
   }
 
   void BinaryTreeSearch::remove(Student student)
-  {}
+  {
+    removeSearch(student, root);
+  }
+
+  void BinaryTreeSearch::removeSearch(Student student, Node*& currentNode)
+  {
+    if (student.obtainId() < currentNode->student.obtainId()){
+      removeSearch(student, currentNode->leftChild);
+    } else if (student.obtainId() > currentNode->student.obtainId()){
+      removeSearch(student, currentNode->rightChild);
+    } else {
+      deleteNode(currentNode);
+    }
+  }
+
+  void BinaryTreeSearch::deleteNode(Node*& currentNode)
+  {
+    Node* temp = currentNode;
+    if (currentNode->leftChild == NULL){
+      currentNode = currentNode->rightChild;
+      delete temp;
+    } else if (currentNode->rightChild == NULL){
+      currentNode = currentNode->leftChild;
+      delete temp;
+    } else {
+      Student StudentSuccessor;
+      obtainSuccessor(StudentSuccessor, currentNode);
+      currentNode->student = StudentSuccessor;
+      removeSearch(StudentSuccessor, currentNode->rightChild);
+    }
+  }
+
+  void BinaryTreeSearch::obtainSuccessor(Student& StudentSuccessor, Node* temp)
+  {
+    temp = temp->rightChild;
+    while(temp->leftChild != NULL){
+      temp = temp->leftChild;
+    }
+    StudentSuccessor = temp->student;
+  }
 
   void BinaryTreeSearch::removeSearch(Student student, Node*& currentNode)
   {}
