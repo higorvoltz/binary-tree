@@ -24,9 +24,6 @@ class BinaryTreeSearch
   void remove(Student student);
   void removeSearch(Student student, Node*& currentNode);
   void deleteNode(Node*& currentNode);
-  void obtainSuccessor(Student& StudentSuccessor, Node* temp);
-  void removeSearch(Student student, Node*& currentNode);
-  void deleteNode(Node*& currentNode);
   void obtainSuccessor(Student& SuccessorStudent, Node* temp);
   void search(Student& student, bool& search);
   void printPreOrder(Node* currentNode);

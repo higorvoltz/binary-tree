@@ -10,10 +10,18 @@ using namespace std;
  }
 
   BinaryTreeSearch::~BinaryTreeSearch()
-  {}
+  {
+    deleteTree(root);
+  }
 
   void BinaryTreeSearch::deleteTree(Node* currentNode)
-  {}
+  {
+    if (currentNode != NULL){
+      deleteTree(currentNode->leftChild);
+      deleteTree(currentNode->rightChild);
+      delete currentNode;
+    }
+  }
 
   Node* BinaryTreeSearch::obtainRoot()
   {
@@ -44,9 +52,9 @@ using namespace std;
       cout << "not is possible to insert" << endl;
     } else {
       Node* newNode = new Node;
-      newNode -> student = student;
-      newNode -> rightChild = NULL;
-      newNode -> leftChild = NULL;
+      newNode->student = student;
+      newNode->rightChild = NULL;
+      newNode->leftChild = NULL;
       if (root == NULL){
         root = newNode;
       } else {
@@ -114,15 +122,6 @@ using namespace std;
     StudentSuccessor = temp->student;
   }
 
-  void BinaryTreeSearch::removeSearch(Student student, Node*& currentNode)
-  {}
-
-  void BinaryTreeSearch::deleteNode(Node*& currentNode)
-  {}
-
-  void BinaryTreeSearch::obtainSuccessor(Student& SuccessorStudent, Node* temp)
-  {}
-
   void BinaryTreeSearch::search(Student& student, bool& search)
   {
     search = false;
@@ -141,10 +140,34 @@ using namespace std;
   }
 
   void BinaryTreeSearch::printPreOrder(Node* currentNode)
-  {}
+  {
+    if (currentNode != NULL) {
+      cout << currentNode->student.obtainName() << ": ";
+      cout <<currentNode->student.obtainId() << endl;
+
+      printPreOrder(currentNode->leftChild);
+      printPreOrder(currentNode->rightChild);
+    }
+  }
 
   void BinaryTreeSearch::printInOrder(Node* currentNode)
-  {}
+  {
+    if (currentNode != NULL){
+      printInOrder(currentNode->leftChild);
+      cout << currentNode->student.obtainName() << ": ";
+      cout <<currentNode->student.obtainId() << endl;
+      printInOrder(currentNode->rightChild);
+
+    }
+  }
 
   void BinaryTreeSearch::printPosOrder(Node* currentNode)
-  {}
+  {
+    if (currentNode != NULL){
+      printPosOrder(currentNode->leftChild);
+      printPosOrder(currentNode->rightChild);
+
+      cout << currentNode->student.obtainName() << ": ";
+      cout <<currentNode->student.obtainId() << endl;
+    }
+  }
