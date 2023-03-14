@@ -3,7 +3,7 @@
 binary tree implmentation
 
 To run the program, you can follow some tutorials like this https://learn.saylor.org/mod/page/view.php?id=29918
-# #g++ binaryTree.cpp student.cpp main.cpp -o main.exe
+> #g++ binaryTree.cpp student.cpp main.cpp -o main.exe
 
 This will produce a main.exe file
 To execute them type ./main.exe on console
